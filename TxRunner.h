@@ -17,8 +17,6 @@
 
 using TransicationMap = std::unordered_map<std::thread::id, Transaction>;
 
-std::mutex m;
-
 class TxRunner {
 public:
     TxRunner(Database& db)
@@ -56,6 +54,7 @@ public:
 private:
     Database& db;
     TransicationMap transactionMap;
+    std::mutex m;
 };
 
 #endif /* TxRunner_h */
